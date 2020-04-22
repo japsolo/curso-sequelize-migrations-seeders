@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <h2>Users:</h2>
+    <ul>
+      <% users.forEach(user => { %>
+      <li> 
+        <h3><mark>User Id: <%= user.id %></mark></h3>
+        <%= `${user.firstName} ${user.lastName} - ${user.email.toLowerCase()}` %>  
+        <a href="/users/<%= user.id %> ">See more</a>
+        <% user.posts.forEach(post => { %>
+          <h4>Post Id: <%= post.id %> </h4>
+          <p> <%= post.description %>  </p>
+        <% }) %>
+      </li>
+      <% }) %>
+    </ul>
+  </body>
+</html>
